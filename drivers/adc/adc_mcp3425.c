@@ -102,12 +102,6 @@ static int mcp3425_channel_setup(const struct device *dev, const struct adc_chan
 		return -EINVAL;
 	}
 
-	if (!cfg->differential) {
-		LOG_ERR("Missing the input-negative property, please make sure you add a "
-			"\"zephyr,input-negative\" property in the binding");
-		return -EINVAL;
-	}
-
 	if ((cfg->gain != ADC_GAIN_1) && (cfg->gain != ADC_GAIN_2) && (cfg->gain != ADC_GAIN_4) &&
 	    (cfg->gain != ADC_GAIN_8)) {
 		LOG_ERR("Unsupported gain selected '%d'", cfg->gain);
